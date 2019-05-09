@@ -18,6 +18,8 @@
 
     <modules>
         <module>maven-enforcer-demo</module>
+        <module>maven-compiler-demo</module>
+        <module>maven-resources-demop</module>
     </modules>
 
     <repositories>

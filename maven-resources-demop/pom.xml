@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hyxt</groupId>
+        <artifactId>maven-demo</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+        <!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+    </parent>
+
+    <groupId>com.hyxt</groupId>
+    <artifactId>maven-resources-demop</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <name>maven-resources-demop</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <test-name>asdasdasdasdasdas</test-name>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <build>
+                <filters>
+                    <filter>src/main/resources/hello.properties</filter>
+                </filters>
+            </build>
+        </profile>
+
+        <profile>
+            <id>pro</id>
+            <build>
+                <filters>
+                    <filter>src/main/hello3.properties</filter>
+                </filters>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                        <encoding>UTF-8</encoding>
+
+                </configuration>
+                <!--如果你需要在其他阶段拷贝资源文件，可以使用插件目标copy-resources。-->
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/non-packaged-resources</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <filters>
+            <filter>src/main/resources/application.properties</filter>
+            <filter>src/main/hello3.properties</filter>
+            <filter>src/main/resources/hello.properties</filter>
+            <filter>src/main/resources2/hello2.properties</filter>
+        </filters>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/</directory>
+                <filtering>true</filtering>
+                <includes>
+                   <include>hello3.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources2</directory>
+                <filtering>true</filtering>
+                <includes><!--精细控制。-->
+                    <include>**/*.txt</include>
+                    <include>**/*.rtf</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.bmp</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+
+</project>
