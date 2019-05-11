@@ -20,6 +20,7 @@
         <module>maven-enforcer-demo</module>
         <module>maven-compiler-demo</module>
         <module>maven-resources-demop</module>
+        <module>maven-resources-profile-demo</module>
     </modules>
 
     <repositories>
