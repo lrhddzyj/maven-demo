@@ -21,6 +21,7 @@
         <module>maven-compiler-demo</module>
         <module>maven-resources-demop</module>
         <module>maven-resources-profile-demo</module>
+        <module>maven-profile-demo</module>
     </modules>
 
     <repositories>
