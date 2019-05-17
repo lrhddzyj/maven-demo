@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hyxt</groupId>
+        <artifactId>maven-demo</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+        <!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+    </parent>
+    <groupId>com.hyxt</groupId>
+    <artifactId>maven-war-demo</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <name>maven-war-demo</name>
+    <description>Demo project for Spring Boot</description>
+    <packaging>war</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                  <configuration>
+                      <warName>demo-war</warName>
+                      <!--target/classes/下的内容是否打成jar包放在WEB-INF\lib下，这样WEB-INF\classes会为空-->
+                      <archiveClasses>true</archiveClasses>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                        <filters>
+                            <filter></filter>
+                        </filters>
+                      <nonFilteredFileExtensions>
+                          <!-- default value contains jpg,jpeg,gif,bmp,png -->
+                          <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+                      </nonFilteredFileExtensions>
+                      <webResources>
+                          <!--打包其它目录-->
+                          <!--<resource>-->
+                              <!--<directory>${project.parent.basedir}/fans-growing-commons/${env}/</directory>-->
+                              <!--<filtering>true</filtering>-->
+                              <!--<targetPath>WEB-INF/classes</targetPath>-->
+                          <!--</resource>-->
+                          <resource>
+                              <directory>src/main/resources</directory>
+                              <includes>
+                                  <include>**/*.png</include>
+                              </includes>
+                              <excludes>
+                                  <exclude>**/*.jpg</exclude>
+                              </excludes>
+                          </resource>
+
+                      </webResources>
+
+                        <archive>
+                             <manifest>
+                                 <mainClass>com.hyxt.maven.MavenWarDemoApplication</mainClass>
+                                 <addClasspath>true</addClasspath>
+                             </manifest>
+                        </archive>
+
+                      <!--打包的时候包含jar-->
+                        <packagingIncludes>
+
+                        </packagingIncludes>
+                      <!--打包的时候排除 相关的jar-->
+                      <packagingExcludes>
+                          WEB-INF/lib/commons-logging-*.jar,
+                          %regex[WEB-INF/lib/log4j-(?!over-slf4j).*.jar]
+                      </packagingExcludes>
+
+                  </configuration>
+
+            </plugin>
+
+            <!--创建暴瘦的war  实际以ear方式打包-->
+            <!--<plugin>-->
+                <!--<artifactId>maven-ear-plugin</artifactId>-->
+                <!--<version>2.9.1</version>-->
+                <!--<configuration>-->
+                    <!--<defaultLibBundleDir>lib/</defaultLibBundleDir>-->
+                    <!--<skinnyWars>true</skinnyWars>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
