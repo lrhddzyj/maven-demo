@@ -33,12 +33,14 @@
     </dependencies>
 
     <build>
+        <finalName>demo-war</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                   <configuration>
                       <warName>demo-war</warName>
+                      <!--<classesClassifier></classesClassifier>-->
                       <!--target/classes/下的内容是否打成jar包放在WEB-INF\lib下，这样WEB-INF\classes会为空-->
                       <archiveClasses>true</archiveClasses>
                         <failOnMissingWebXml>false</failOnMissingWebXml>

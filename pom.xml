@@ -23,6 +23,7 @@
         <module>maven-resources-profile-demo</module>
         <module>maven-profile-demo</module>
         <module>maven-war-demo</module>
+        <module>maven-jar-demo</module>
     </modules>
 
     <repositories>
