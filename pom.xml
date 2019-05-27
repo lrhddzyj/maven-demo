@@ -24,6 +24,7 @@
         <module>maven-profile-demo</module>
         <module>maven-war-demo</module>
         <module>maven-jar-demo</module>
+        <module>maven-assembly-demo</module>
     </modules>
 
     <repositories>

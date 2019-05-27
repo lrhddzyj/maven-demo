@@ -57,9 +57,16 @@
                                 <includes>
                                     <include>**/service/*</include>
                                 </includes>
+                                <!--<archive>-->
+                                    <!--<manifest>-->
+                                        <!--<addDefaultImplementationEntries>true</addDefaultImplementationEntries>-->
+                                        <!--<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>-->
+                                    <!--</manifest>-->
+                                <!--</archive>-->
                             </configuration>
                         </execution>
                     </executions>
+
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
