@@ -38,9 +38,7 @@
             <properties>
                 <env>src/main/resources</env>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+
         </profile>
 
         <profile>
@@ -48,6 +46,9 @@
             <properties>
                 <env>doc/dev</env>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
 
         <profile>

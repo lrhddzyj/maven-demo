@@ -25,6 +25,8 @@
         <module>maven-war-demo</module>
         <module>maven-jar-demo</module>
         <module>maven-assembly-demo</module>
+        <module>maven-customize-use-demo</module>
+        <module>test-maven-plugin</module>
     </modules>
 
     <repositories>
